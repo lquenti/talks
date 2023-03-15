@@ -1,0 +1,8 @@
+digraph G {
+  silent [style=invis];
+  silent -> Nutzer;
+  Nutzer -> Libraries;
+  Libraries -> Popularität;
+  Popularität -> Lernressourcen;
+  Lernressourcen -> Nutzer;
+}

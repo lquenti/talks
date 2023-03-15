@@ -1,8 +1,13 @@
 # Still missing
-- [ ] Python (gh)
-  - [ ] Archive repo afterwards
-- [ ] HPCSA (gh)
+- [x] Python (gh)
+  - [ ] Archive repo afterwards (and after extracting the readme)
+- [x] HPCSA (gh)
+  - [ ] Ref recording and publish it on YT
 - [ ] wiwikam (gh)
   - [ ] Delete repo afterwards
 - [ ] CompNT
 - [ ] Perlen
+- [ ] Clear up repo
+  - [ ] Make all ordners the same
+  - [ ] Add a README to each folder
+  - [ ] Add a general README
