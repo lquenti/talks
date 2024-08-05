@@ -1,0 +1,114 @@
+\documentclass[12pt]{beamer}
+
+\title{Perlen der theoretischen Informatik}
+\subtitle{Theorem von Khrapchenko}
+\author{Lars Quentin und Lukas Niegsch}
+\institute{Georg-August-Universität Göttingen}
+\date{Irgendwann 2020?}
+
+\usetheme{Goettingen}
+\setbeamertemplate{footline}[frame number]
+\usepackage[ddmmyyyy]{datetime}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{dirtytalk}
+
+\renewcommand{\dateseparator}{.}
+\definecolor{dominant_blue}{HTML}{CCCCEC}
+\definecolor{roman_silver}{HTML}{84889A}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}{}
+    \begin{block}{Problemstellung}
+        \begin{itemize}
+            \item Komplexit\"at von De-Morgan-Schaltkreisen
+            \pause
+            \item Standartma\ss{}: Bl\"atteranzahl $L(f)$\\
+            \pause
+            \item Absch\"atzung durch einfachere Ma\ss{}e
+            % Kharapchenko hat daraufhin versucht, \"uber sein Konzept von kombinatorischen
+            % Rechtecken das Problem besser abzusch\"atzen
+            %
+            % Hier nochmal eine schnelle Wiederholung von Lukas Vortrag
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\input{Lukas}
+
+\begin{frame}{Ende Teil 1, Teil 2 nächste Woche}
+\end{frame}
+
+\input{Wiederholung_Lukas}
+\input{Lars}
+
+\begin{frame}{}
+    \begin{block}{}
+    \Large{Vielen Dank f\"ur eure Aufmerksamkeit}
+    \end{block}
+    
+    \begin{block}{Quellen}
+    \begin{itemize}
+        \item \textbf{Boolean Function Complexity - Advances and Frontiers}
+        \begin{itemize}
+            \item Stasys Jukna 2012\\\url{doi.org/10.1007/978-3-642-24508-4}
+        \end{itemize}
+        \item \textbf{On convex complexity measures}
+        \begin{itemize}
+            \item Pavel Hrubeš, Stasys Jukna, Alexander Kulikov, Pavel Pudlák 2010\\\url{doi.org/10.1016/j.tcs.2010.02.004}
+        \end{itemize}
+        \item \textbf{Bild zum 3D Würfel} 
+        \begin{itemize}
+            \item \url{https://www.mathelike.de/images/stories/B2014BA_PT_B_G_2/B2014BA_PT_B_G_2_a_01.png}
+        \end{itemize}
+    \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{}
+    \begin{block}{Quellen}
+        \begin{itemize}
+            \item \textbf{Improvements on Khrapchenko's theorem}
+            \begin{itemize}
+                \item Elias Koutsoupias\\
+                Theoretical Computer Science. Vol. 116, 1993
+            \end{itemize}
+            \item \textbf{The Quantum Adversary Method and Classical Formula Size Lower Bounds}
+            \begin{itemize}
+                \item Sophie Laplante, Troy Lee, Mario Szegedy\\
+                Computational Complexity 15, 2006
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}[noframenumbering]{}
+        \begin{block}{Satz 3}
+        Sei $\mu$ ein Rechtecksma\ss{}. Dann gilt f\"ur alle $I \subseteq [n]$
+        \[
+            \mu(S_I) \leq \frac{9}{8} |I|^2
+        \text{ sowie }
+            \mu(T_I) \leq \frac{9}{8} |I|^2
+        \]
+    \end{block}
+     \begin{block}{Theorem [Yablonskii 1954]}
+        Sei $n \in \mathbb{N}$ mit $n \geq 2$. Dann
+        \[
+            L(\oplus_n) \leq 3np_n - 2p_n^2 \leq \frac{9}{8}n^2,
+        \]
+        wobei $p_n = 2^{\lfloor log_2n\rfloor}$.
+    \end{block}
+    \begin{block}{Lemma [Rychkov 1985]}
+        Für jede boolsche Funktion $f$ und jede monotone boolsche Funktion $g$ gilt:
+        \[
+            L(f) \geq \chi (f), L_+ (g) \geq \chi_+ (g)
+        \]
+        Hierbei ist $L(f)$ die kleinste Anzahl der Blätter einer DeMorgan Formel.
+    \end{block}
+\end{frame}
+\end{document}

@@ -1,0 +1,485 @@
+\section{Motivation}
+\begin{frame}{Forschung seit 1971}
+    \begin{block}{Elias Koutsoupias: Improvements on Khrapchenko's theorem (1993)}
+    \begin{columns}[onlytextwidth,T]
+      \column{\dimexpr\linewidth-30mm-5mm}
+        \say{[...] we know of no Boolean function where our method improves upon Kharapchenko's theorem by a factor \emph{larger than two}, when $A,B$ are chosen appropriately}\\\vspace*{1cm}
+        Somit $O(n^2)$!
+      \column{30mm}
+      \includegraphics[width=30mm]{Koutsoupias.jpg}
+      Quelle: \url{cs.ox.ac.uk}
+      \end{columns}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Weitere Forschung seit 1971}
+    \begin{block}{S. Laplante, T. Lee, M. Szegedy: The Quantum Adversary Method and Classical Formula Size Lower Bounds (2006)}
+        Zu einem Optimierungsansatz von Karchmer (1995):\\~\\
+        \say{They show that this bound is larger than the bound given by Kharapchenko's method, but cannot prove lower bounds larger than $n^2$}\\~\\
+        \pause
+        Wieso ist die $n^2$ Schranke so schwierig zu brechen?
+    \end{block}
+\end{frame}
+
+
+
+\section{Generalisierte Kostenma\ss{}e}
+
+\begin{frame}{}
+    \begin{block}{Definition Komplexit\"atsma\ss{}}
+        Sei $\mathcal{F}_n$ die Menge aller boolschen Funktionen der Form 
+        \[
+        f : \{0,1\}^n \rightarrow \{0,1\}
+        \]
+        Eine Funktion $\nu : \mathcal{F}_n \rightarrow \mathbb{R}$ heisst \textit{formles Komplexit\"atsma\ss{}}, wenn
+        \pause
+        \begin{itemize}
+            \item[(a)]Das Ma\ss{} jeden Literals $\leq 1$ ist (Normalisierung)
+            \pause
+            \item[(b)]Fuer alle $g,h \in \mathcal{F}_n$ gilt, dass
+            \[
+                \nu(g \lor h) \leq \nu(g) + \nu(h)
+            \]
+            (Subadditivit\"at)
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{}
+    \begin{block}{Subadditives Rechtecksma\ss{}}
+        $\mathcal{R}(S)$: Menge aller Unterrechtecke von $S$.\\\vspace*{0.5cm}
+        \pause
+        $\mu : \mathcal{R}(S) \rightarrow \mathbb{R}$ \textit{(stark) subadditives Rechtecksma\ss{}}, wenn
+        \begin{itemize}
+            \item[(i)] (Normalisierung) $\mu(M) \leq 1$, $M$ monochrom
+            \item[(ii)] (Subadditivit\"at) F\"ur disjunkte Partition $R = R_1 \cup \dots \cup R_m$
+            \[
+                \mu(R) \leq \sum_{i=1}^m \mu(R_i)
+            \]
+            \pause
+        \end{itemize}
+        \begin{itemize}
+            \item \textbf{Subadditivit\"at}: $m = 2$\\
+            \item \textbf{Starke Subadditivit\"at}: $m$ beliebig
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{}
+    \begin{block}{Gebrochene Partitionen}
+        Seien 
+        \begin{itemize}
+            \item $R$ ein Rechteck
+            \item $R_1,\dots,R_m$ dessen Unterrechtecke mit
+            \item Gewichten $r_1,\dots,r_m \in [0,1]$
+        \end{itemize}
+        \pause
+        $R_1,\dots,R_m$ bilden eine \textit{gebrochene Partition}, wenn f\"ur alle Kanten $e$
+        \[
+            \sum_{i : e \in R_i} r_i = 1
+        \]
+        gilt.
+    \end{block}
+\end{frame}
+
+\begin{frame}{}
+    \begin{block}{Konvexit\"at}
+        Sei $\mu$ stark subadditives Rechtecksma\ss{}.\\~\\
+        \pause
+        $\mu$ ist \emph{konvex}, wenn f\"ur beliebige gebrochene Partitionen $S = \sum_{i=1}^m r_i R_i$
+        \[
+            \mu(S) \leq \sum_{i=1}^m r_i \mu(R_i)
+        \]
+        gilt.
+    \end{block}
+\end{frame}
+
+\begin{frame}{}
+    \begin{block}{\"Uberblick Ma\ss{}e}
+        \begin{itemize}
+            \item Subadditiv: 
+            \[
+                \mu(R) \leq \mu(R_1) + \mu(R_2)
+            \]
+            \pause
+            \item Stark Subadditiv: 
+            \[
+                \mu(R) \leq \sum_{i=1}^m \mu(R_i)
+            \]
+            \pause
+            \item Konvex: \[\mu(R) \leq \sum_{i=1}^m r_i \mu(R_i)\]
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{}
+    \begin{block}{Gebrochene Partitionsnummer}
+    Die gebrochene Partitionsnummer ist das Minimum
+    \[
+        \pi(S) := \min \sum_{i=1}^t r_i
+    \]
+    \"uber alle \textbf{monochromen} gebrochenen Partitionen $R_1,\dots,R_t$ und Gewichte $r_1,\dots,r_t$.\\
+    \pause
+    Hierbei handelt es sich um die gewichtete Version von $\chi(S)$
+    \end{block}
+\end{frame}
+
+\begin{frame}{}
+    \begin{block}{Lemma subadditive Rechtecksma\ss{}e}
+        $\chi(R)$ ist das gr\"o\ss{}te stark subadditive Rechtecksma\ss{}, d.h.
+        \begin{itemize}
+            \item $\chi(R)$ ist stark subadditiv
+            \item $\mu(R) \leq \chi(R)$
+        \end{itemize}
+        f\"ur alle Rechtecke $R$ und stark subadditiven Rechtecksma\ss{}en $\mu$.
+    \end{block}
+    \pause
+    \begin{block}{Lemma konvexe Rechtecksma\ss{}e}
+        $\pi(R)$ ist das gr\"o\ss{}te konvexe Rechtecksma\ss{}, d.h.
+        \begin{itemize}
+            \item $\pi(R)$ ist konvex
+            \item $\mu(R) \leq \pi(R)$
+        \end{itemize}
+        f\"ur alle Rechtecke $R$ und konvexe Rechtecksma\ss{}en $\mu$.
+    \end{block}
+\end{frame}
+
+% Hier ist beabsichtigt, dass nur das zweite Lemma bewiesen wird.
+\begin{frame}[t]{Beweis konvexe Rechtecksma\ss{}e}
+    Zu zeigen: $\pi$ ist konvex.
+    \pause
+    Seien
+    \begin{itemize}
+        \item $S = \sum_{j} r_j$ \colorbox{dominant_blue}{\strut$R_j$} eine gebrochene Partition
+        \item \colorbox{dominant_blue}{\strut$R_j = \sum_{i} s_{ij} M_{ij}$} gebrochene Partitionen f\"ur alle $j$, so dass
+        \begin{itemize}
+            \item $M_{ij}$ monochrom
+            \item $\pi(R_j) = \sum_i s_{ij}$ (sprich minimal) 
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[t,noframenumbering]{Beweis konvexe Rechtecksma\ss{}e}
+    Zu zeigen: $\pi$ ist konvex.
+    Seien
+    \begin{itemize}
+        \item $S = \sum_{j} $ \colorbox{roman_silver}{\strut$r_j$} $R_j$ eine gebrochene Partition
+        \item \colorbox{dominant_blue}{\strut$R_j = \sum_{i} s_{ij} M_{ij}$} gebrochene Partitionen f\"ur alle $j$, so dass
+        \begin{itemize}
+            \item $M_{ij}$ monochrom
+            \item $\pi(R_j) = \sum_i s_{ij}$ (sprich minimal) 
+        \end{itemize}
+    \end{itemize}
+    Dies kann man umformen zu 
+    \[
+        S = \sum_{ij} \colorbox{roman_silver}{\strut$r_j$} \colorbox{dominant_blue}{\strut$s_{ij} M_{ij}$}
+    \]
+\end{frame}
+
+\begin{frame}[t,noframenumbering]{Beweis konvexe Rechtecksma\ss{}e}
+    Zu zeigen: $\pi$ ist konvex.
+    Seien
+    \begin{itemize}
+        \item $S = \sum_{j} r_j R_j$ eine gebrochene Partition
+        \item $R_j = \sum_{i} s_{ij} M_{ij}$ gebrochene Partitionen f\"ur alle $j$, so dass
+        \begin{itemize}
+            \item $M_{ij}$ monochrom
+            \item $\pi(R_j) = \sum_i s_{ij}$ (sprich minimal) 
+        \end{itemize}
+    \end{itemize}
+    Dies kann man umformen zu 
+    \[
+        S = \sum_{ij} r_j s_{ij} M_{ij}
+    \]
+    Da $\pi$ das Minimum zur\"uckgibt, gilt
+    \[
+        \pi(S) \leq \sum_{ij} r_j s_{ij} = \sum_j r_j \pi(R_j)
+    \]
+\end{frame}
+
+\begin{frame}[t]{Beweis konvexe Rechtecksma\ss{}e 2}
+    Sei nun $\mu$ ein beliebiges Konvexit\"atsma\ss{}. Dann gilt
+    \begin{align*}
+        \mu(S) &\leq \sum_i r_i \mu(M_i) &\text{ Konvexit\"at}\\
+        &\leq \sum_{i} r_i &\text{ Normalit\"at}\\
+        &= \pi(S)
+    \end{align*}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Konvexe Schranken}
+\begin{frame}{Konvexe Schranken}
+    \begin{block}{[Hrubes, Jukna, Kulikov, Pudlak 2010]}
+        Sei $\mu$ ein Konvexit\"atsma\ss{}, dann gilt
+        \[
+            \mu(S) \leq \frac{9}{8} (n^2+n)
+        \]
+        f\"ur jedes $n$-dimensionales Rechteck $S$
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \begin{block}{Definition zyklische Gruppe}
+        Sei $\mathbb{Z}_2 = (\{0,1\}, +, \cdot)$
+        der zyklische K\"orper vom Grad 2. \\
+        \begin{itemize}
+            \item + ist die Addition modulo 2
+            \item $\cdot$ ist $\wedge$
+        \end{itemize}
+    \end{block}
+    \pause
+    \begin{block}{Satz 1}
+        Jeder Vektor $v \in \mathbb{Z}_2^n \backslash \{0\}$ ist genau zu der H\"alfte aller Vektoren aus $\{0,1\}^n$ orthogonal.
+    \end{block}
+\end{frame}
+
+\begin{frame}[t]{Beweis}
+    Seien
+    \begin{itemize}
+        \item $v,w \in \{0,1\}^n$ beliebig
+        \item $s$ Anzahl der Nullen in $v$
+        \item $r = n-s$ Anzahl der Einsen in $v$
+    \end{itemize}
+    \pause
+    Orthogonalit\"at ist definiert als
+    \[
+        \langle v,w \rangle := \sum_{i=1}^n v_i w_i = 0
+    \]
+    \pause
+    Wir haben
+    \begin{itemize}
+        \item $s$ Freiheitsgerade, da $0 \cdot w_i = 0$
+        \item $r-1$ Freiheitsgerade, da $\forall k : 2k \text{ mod } 2 = 0$
+    \end{itemize}
+    \pause
+    Somit
+    \[
+        2^s \cdot 2^{r-1} = 2^{s+r-1} = 2^{n-1}
+    \]
+    orthogonale Vektoren
+\end{frame}
+
+\begin{frame}
+    \begin{block}{Definition Parit\"atsrechtecke}
+        Sei $I \subseteq [n] := \{1,\dots,n\}$.\\
+        Dann sind die $I$-Parit\"atsrechtecke definiert als
+        \begin{align*}
+            S_I &:= \{ x \in \{0,1\}^n : \bigoplus_{i \in I} x_i = 0 \}
+            \times \{ y \in \{0,1\}^n : \bigoplus_{i \in I} y_i = 1 \}\\
+            T_I &= \{(y,x) : (x,y) \in S_I\}
+        \end{align*}
+    \end{block}
+\end{frame}
+
+\begin{frame}{}
+    \begin{block}{Satz 2}
+        Jede Kante $(x,y) \in \{0,1\}^n \times \{0,1\}^n$, $x\neq y$ geh\"ort zu $2^{n-1}$ Parit\"atsrechtecken.
+    \end{block}
+    \pause
+    \begin{block}{Beweisskizze}
+        \begin{itemize}
+            \item Sei $I \subseteq [n]$, $v_I \in \{0,1\}^n$ charakteristischer Vektor
+        \end{itemize}
+        \pause
+        \begin{itemize}
+            \item $x \oplus y$ nicht orthogonal zu $2^{n-1}$ Vektoren (Satz 1)
+        \end{itemize}
+        \pause
+        \begin{itemize}
+            \item Diese kann man als $v_I$ interpretieren
+        \end{itemize}
+        \pause
+        \begin{itemize}
+            \item $(x,y)$ in $2^{n-1}$ Parit\"atsrechtecken
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \begin{block}{Satz 3}
+        Sei $\mu$ ein Rechtecksma\ss{}. Dann gilt f\"ur alle $I \subseteq [n]$
+        \[
+            \mu(S_I) \leq \frac{9}{8} |I|^2
+        \]
+        sowie
+        \[
+            \mu(T_I) \leq \frac{9}{8} |I|^2
+        \]
+    \end{block}
+    \pause
+    Folgerung aus
+    % TODO: Falls Nachfragen kommen:
+    % Wie ich bereits angeschnitten habe, kann man die Rechtecke als Paritaetsrechtecke betrachten.
+    % Somit haben wir fuer die Formelgroesse eine Schranke
+    % Dann kann man ganz einfach zeigen, dass die Formelgroesse groesser als jedes Rechtecksmass ist,
+    % es somit eine obere Schranke bildet.
+     \begin{block}{Theorem [Yablonskii 1954]}
+        Sei $n \in \mathbb{N}$ mit $n \geq 2$. Dann
+        \[
+            L(\oplus_n) \leq 3np_n - 2p_n^2 \leq \frac{9}{8}n^2,
+        \]
+        wobei $p_n = 2^{\lfloor log_2n\rfloor}$.
+    \end{block}
+\end{frame}
+
+\begin{frame}{Zu Zeigen:}
+    \begin{block}{[Hrubes, Jukna, Kulikov, Pudlak 2010]}
+        Sei $\mu$ ein Konvexit\"atsma\ss{}, dann gilt
+        \[
+            \mu(S) \leq \frac{9}{8} (n^2+n)
+        \]
+        f\"ur jedes $n$-dimensionales Rechteck $S$
+    \end{block}
+\end{frame}
+
+\begin{frame}[t]{Beweis}
+    Seien
+    \begin{itemize}
+        \item $S$ ein $n$-dimensionales Rechteck, $I \subseteq [n]$, $|I| = i$
+    \end{itemize}
+    \pause
+    \begin{itemize}
+        \item $\mu$ Konvexit\"atsma\ss{}
+    \end{itemize}
+    \pause
+    \begin{itemize}
+        \item $\mathcal{R}(S)$ die Multimenge aller Parit\"atsrechtecke bzgl $S$ und $I$, sprich
+        \[
+            (S_I \cup T_I) \cap S
+        \]
+    \end{itemize}
+    \pause
+    Dann
+    \begin{itemize}
+        \item Jede Kante in $S$ geh\"ort zu $2^{n-1}$ Elementen in $\mathcal{R}(S)$
+    \end{itemize}
+    \pause
+    \begin{block}{Satz 2}
+        Jede Kante $(x,y) \in \{0,1\}^n \times \{0,1\}^n$, $x\neq y$ geh\"ort zu $2^{n-1}$ Parit\"atsrechtecken.
+    \end{block}
+\end{frame}
+
+\begin{frame}[t]
+    \begin{itemize}
+        \item Somit ist $\mathcal{R}(S)$ eine gebrochene Partition mit Gewicht
+        \[
+             r_R = \frac{1}{2^{n-1}}
+        \]
+        f\"ur jedes Rechteck $R \in \mathcal{R}(S)$, da
+    \end{itemize}
+    \pause
+    \begin{block}{Gebrochene Partitionen}
+        $R_1,\dots,R_m$ bilden eine \textit{gebrochene Partition}, wenn f\"ur alle Kanten $e$
+        \[
+            \sum_{i : e \in R_i} r_i = 1
+        \]
+        gilt.
+        \end{block}
+\end{frame}
+
+\begin{frame}[t,noframenumbering]
+    \begin{itemize}
+        \item Somit ist $\mathcal{R}(S)$ eine gebrochene Partition mit Gewicht
+        \[
+             r_R = \frac{1}{2^{n-1}}
+        \]
+        f\"ur jedes Rechteck $R \in \mathcal{R}(S)$, da
+    \end{itemize}
+    \begin{itemize}
+        \item Zudem wissen wir, dass
+        \[
+            \mu(R) \leq \frac{9}{8} i^2
+        \]
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[t]{}
+    Somit folgt
+    \begin{align*}
+        \mu(S) &\underbrace{\leq}_{\text{konvex}} \sum_{R \in \mathcal{R}(S)} r_R \mu(R) = \frac{1}{2^{n-1}} \sum_{R \in \mathcal{R}(S)} \mu(R)
+    \end{align*}
+\end{frame}
+
+\begin{frame}[t, noframenumbering]{}
+    Somit folgt
+    \begin{align*}
+        \mu(S) &\leq \sum_{R \in \mathcal{R}(S)} r_R \mu(R)= \frac{1}{2^{n-1}} \sum_{R \in \mathcal{R}(S)} \mu(R)\\
+        &= \frac{1}{2^{n-1}} \sum_{i=1}^n \sum_{\substack{R \in \mathcal{R}(S)\\|R| = i}} \mu(R)
+    \end{align*}
+\end{frame}
+
+\begin{frame}[t, noframenumbering]{}
+    Somit folgt
+    \begin{align*}
+        \mu(S) &\leq \sum_{R \in \mathcal{R}(S)} r_R \mu(R)= \frac{1}{2^{n-1}} \sum_{R \in \mathcal{R}(S)} \mu(R)\\
+        &= \frac{1}{2^{n-1}} \sum_{i=1}^n \colorbox{dominant_blue}{$\strut\displaystyle\sum\limits_{{\substack{R \in \mathcal{R}(S)\\|R| = i}}}$} \colorbox{roman_silver}{$\strut\mu(R)$}\\
+        &\leq \frac{1}{2^{n-1}} \sum_{i=1}^n 2 \colorbox{dominant_blue}{$\displaystyle\binom{n}{i}$} \colorbox{roman_silver}{$\strut\dfrac{9}{8} i^2$} 
+    \end{align*}
+    wobei
+    \begin{itemize}
+        \item \colorbox{dominant_blue}{$\strut|I| = i$}
+        \item \colorbox{roman_silver}{$\strut\displaystyle\mu(R) \leq \frac{9}{8} i^2$} (Satz 3)
+        \item $2$, da $S_I$ und $T_I$
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[t, noframenumbering]{}
+    Somit folgt
+    \begin{align*}
+        \mu(S) &\leq \sum_{R \in \mathcal{R}(S)} r_R \mu(R)= \frac{1}{2^{n-1}} \sum_{R \in \mathcal{R}(S)} \mu(R)\\
+        &= \frac{1}{2^{n-1}} \sum_{i=1}^n \sum_{\substack{R \in \mathcal{R}(S)\\|R| = i}} \strut\mu(R)\\
+        &\leq \frac{1}{2^{n-1}} \sum_{i=1}^n 2 \binom{n}{i} \strut\dfrac{9}{8} i^2 = \frac{1}{2^{n-2}} \frac{9}{8} \sum_{i=1}^n \binom{n}{i} i^2
+    \end{align*}
+\end{frame}
+
+\begin{frame}[t, noframenumbering]{}
+    Somit folgt
+    \begin{align*}
+        \mu(S) &\leq \sum_{R \in \mathcal{R}(S)} r_R \mu(R)= \frac{1}{2^{n-1}} \sum_{R \in \mathcal{R}(S)} \mu(R)\\
+        &= \frac{1}{2^{n-1}} \sum_{i=1}^n \sum_{\substack{R \in \mathcal{R}(S)\\|R| = i}} \strut\mu(R)\\
+        &\leq \frac{1}{2^{n-1}} \sum_{i=1}^n 2 \binom{n}{i} \strut\dfrac{9}{8} i^2 = \frac{1}{2^{n-2}} \frac{9}{8} \sum_{i=1}^n \binom{n}{i} i^2\\
+        &= \dots
+    \end{align*}
+\end{frame}
+
+\begin{frame}[t, noframenumbering]{}
+    Somit folgt
+    \begin{align*}
+        \mu(S) &\leq \sum_{R \in \mathcal{R}(S)} r_R \mu(R)= \frac{1}{2^{n-1}} \sum_{R \in \mathcal{R}(S)} \mu(R)\\
+        &= \frac{1}{2^{n-1}} \sum_{i=1}^n \sum_{\substack{R \in \mathcal{R}(S)\\|R| = i}} \strut\mu(R)\\
+        &\leq \frac{1}{2^{n-1}} \sum_{i=1}^n 2 \binom{n}{i} \strut\dfrac{9}{8} i^2 = \frac{1}{2^{n-2}} \frac{9}{8} \sum_{i=1}^n \binom{n}{i} i^2\\
+        &= \dots\\
+        &= \frac{1}{2^{n-2}} \frac{9}{8} (n^2 + n) 2^{n-2}
+    \end{align*}
+\end{frame}
+
+\begin{frame}[t, noframenumbering]{}
+    Somit folgt
+    \begin{align*}
+        \mu(S) &\leq \sum_{R \in \mathcal{R}(S)} r_R \mu(R)= \frac{1}{2^{n-1}} \sum_{R \in \mathcal{R}(S)} \mu(R)\\
+        &= \frac{1}{2^{n-1}} \sum_{i=1}^n \sum_{\substack{R \in \mathcal{R}(S)\\|R| = i}} \strut\mu(R)\\
+        &\leq \frac{1}{2^{n-1}} \sum_{i=1}^n 2 \binom{n}{i} \strut\dfrac{9}{8} i^2 = \frac{1}{2^{n-2}} \frac{9}{8} \sum_{i=1}^n \binom{n}{i} i^2\\
+        &= \dots\\
+        &= \frac{1}{2^{n-2}} \frac{9}{8} (n^2 + n) 2^{n-2} \\
+        &= \frac{9}{8} (n^2+n)
+    \end{align*}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Zusammenfassend:}
+    \begin{itemize}
+        \item Konvexe Ma\ss{}e k\"onnen nicht die $O(n^2)$ Schranke brechen
+    \end{itemize}
+    \pause
+    \begin{block}{[Hrubes, Jukna, Kulikov, Pudlak 2010]}
+        Sei $\mu$ ein Konvexit\"atsma\ss{}, dann gilt
+        \[
+            \mu(S) \leq \frac{9}{8} (n^2+n)
+        \]
+        f\"ur jedes $n$-dimensionales Rechteck $S$
+    \end{block}
+    \pause
+    \begin{itemize}
+        \item Danke f\"ur alle tollen Vortr\"age
+    \end{itemize}
+\end{frame}
