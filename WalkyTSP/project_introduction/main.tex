@@ -1,0 +1,61 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Presentation Template
+% LaTeX Template
+% Version 1.0 (2023-02-08)
+%
+% This template was adapted by:
+% Jonathan Decker (jonathan.decker@uni-goettingen.de)
+% From a template made by:
+% Julian Kunkel (julian.kunkel@gwdg.de)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[compress,aspectratio=169]{beamer}
+
+% make sure the theme file is on this path
+\usepackage{./assets/beamerthemeGoettingen}
+
+\addbibresource{presentation/ref.bib}
+\graphicspath{{./}{./assets/}}
+
+% --- document configuration ---
+\newcommand{\mytitle}{Rusty Parallel Traveling Salesman Problem Solver}
+% Leave empty for no subtitle
+\newcommand{\mysubtitle}{walky walky}
+\newcommand{\myauthor}{Lars Quentin, Johann Carl Meyer, Dr. Artur Wachtel}
+\newcommand{\myauthorurl}{https://github.com/lquenti/walky}
+\newcommand{\myvenue}{Practical Course on High-Performance Computing}
+% For example, use \today
+\newcommand{\mydate}{17.05.2023}
+% For example, Institute for Computer Science / GWDG
+\newcommand{\myinstitute}{Institute for Computer Science}
+
+\configuretitlepage
+
+
+\begin{document}
+
+\begin{frame}[plain]
+	\titlepage
+\end{frame}
+
+\begin{frame}[t]{Table of contents}
+  \tableofcontents[subsectionstyle=hide/hide]
+\end{frame}
+
+% --- slides begin ---
+
+\section{Project Idea}
+
+\input{presentation/01_project_idea.tex}
+
+\section{Project Plan}
+
+\input{presentation/02_project_plan.tex}
+
+\begin{frame}{References}
+    % References slide in appendix
+    \renewcommand*{\bibfont}{\normalfont\scriptsize}
+    \printbibliography[heading=none]
+\end{frame}
+
+\end{document}

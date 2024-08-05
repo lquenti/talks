@@ -1,0 +1,21 @@
+\section{Conclusion}
+The \acf{TSP} is one of the most well-studied problems in computer science with many real-world applications.
+In order to solve these problems, walky, a new Rust-based \ac{TSP} solver, was created. Walky supports exact
+solving using highly optimized sequential and multi-threading algorithms as well as distributed, \ac{MPI}-based
+parallelization. Furthermore, it supports two different approximation algorithms; the simple, easy-to-implement
+Nearest Neighbour algorithm as well as the sophisticated Christofides algorithm producing a tight upper bound.
+Additionally, it supports a sequential, multi-threaded, and distributed lower-bound calculation using two different
+lower-bound algorithms. Note that, instead of just being a prototype, walky is fully documented, well-tested, 
+and officially published as a Rust crate, allowing real-world usage for any TSPLIB-XML formatted problem.
+
+The benchmarks showed, that pruning vastly increased the performance and thus viability of exact solving. The usage of dynamic space partitioning improved the scaling of the distributed memory algorithm. The nearest neighbour approximation, due to its minimal communication, scaled nearly optimal.
+They also showed, that the 1-tree lower-bound greatly benefits from parallelism.
+Christofides algorithm in its randomized implementation is a very quick approximation to the \ac{TSP},
+the randomized approximation can be made more reliable by utilizing parallelism.
+For the \ac{MST} computation, the graphs tested in this setting were too small to
+benefit from parallelism, though the benchmarks indicated that for larger graphs
+a parallel implementation of Prim's algorithm would outperform its sequential counterpart.
+
+Lastly, walky also proved that Rust is viable for distributed, \ac{MPI}-based computation and implementing
+optimized, efficient algorithms and data structures. It shows that Rust is a sufficient programming language
+for developing \ac{HPC} applications.

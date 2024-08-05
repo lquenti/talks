@@ -1,0 +1,77 @@
+\begin{frame}[t]{Technical Decisions}
+\begin{itemize}
+\item \textbf{Programming Language:} Rust
+\pause
+\item \textbf{Input Format:} TSPLIB
+\pause
+\item \textbf{Project Scope:}
+\begin{itemize}
+\pause
+\item I/O management
+\pause
+\item Exact solving
+\begin{itemize}
+\item Complete search
+\item Search space pruning
+\item Dynamic Programming
+\end{itemize}
+\pause
+\item Approximation algorithms
+\begin{itemize}
+\item MST-based
+\item Ant Colony Optimization
+\end{itemize}
+\pause
+\item Lower bounds computation (MST based)
+\pause
+\item Post-Optimization (2-opt)
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t]{Timeline}
+  \pause
+\begin{itemize}
+  \item Intial single threaded MVP:
+  \begin{itemize}
+    \item Input parser
+    \item Naive exact solver
+    \item Initial benchmarking using criterion
+  \end{itemize}
+  \pause
+  \item Initial approximation approaches:
+  \begin{itemize}
+    \item MST-based approach
+    \item Ant colony optimization
+  \end{itemize}
+  \pause
+  \item Optimizing single threaded code
+  \begin{itemize}
+    \item Algorithmic improvements
+    \item Classical Performance Engineering
+  \end{itemize}
+  \pause
+  \item Inter-Node, Shared Memory Parallelization
+  \begin{itemize}
+    \item crossbeam, Rayon (OpenMP-alike)
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t]{Timeline (cont.)}
+\begin{itemize}
+\item Optimizing Shared Memory Parallelization
+  \begin{itemize}
+    \item Evaluate Causal Profiling
+  \end{itemize}
+\pause
+\item Intra-Node, Distributed Memory Parallelization
+\begin{itemize}
+\item rsmpi
+\end{itemize}
+\pause
+\item Optimizing Distributed Memory Parallelization
+\pause
+\item Report Writing
+\end{itemize}
+\end{frame}

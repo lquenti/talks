@@ -1,0 +1,30 @@
+\section{Challenges and Future Work}
+
+\subsection{Challenges}
+Although all goals were met and all algorithms successfully implemented and parallelized, a few problems arose in development.
+
+\paragraph{Inperformant initial data structures:}
+In walky, graphs are implemented using adjacency matrices instead of adjacency lists. Initially, this was implemented using a nested \texttt{Vec<>}. This turned out to be very inefficient for multiple reasons:
+\begin{itemize}
+\item \textbf{Capacity management}: Since vectors are dynamically sized, iteratively inserting elements can result in multiple reallocations with larger capacity.
+\item \textbf{Runtime bounds checking}: Since their size is not known at compile time, vectors require a lot of bounds checks, which creates more branching and overall instructions. See the bounds check cookbook \cite{davidoff_recipes_2023} for more information on how to best avoid bounds checking.
+\item \textbf{Memory locality}: Since vectors are heap allocated, the inner vectors in a \texttt{Vec<Vec<T>>} struct can be located at significantly different memory distances from one another. This results in worse data cache utilization and memory prefetching.
+\end{itemize}
+Beyond that, it was an overall very na\"ive implementation. In the current version, we use the \href{https://github.com/dimforge/nalgebra}{nalgebra} crate. It is highly optimized and uses a lot of advanced Rust performance techniques such as leveraging procedural macros for more compile time utilization, a custom allocator, and SIMD instructions as well as leveraging the state-of-the-art literature.
+
+\paragraph{Insufficient \ac{MPI} Language Support:}
+Rust already has great first-class \ac{MPI} support using \texttt{rsmpi} \cite{noauthor_mpi_2023}. Unfortunately, as already described above, this support does not extend to \ac{MPI} benchmarking, as the Rust ecosystem is not yet integrated.
+
+\subsection{Future Work}
+While the goals for this practical were archived, a lot of possible future work is still to be done. Here are a few of the possible next steps:
+\begin{itemize}
+\item While the exact solving algorithm is already highly optimized from a performance engineering perspective, it internally still uses the most na\"ive algorithm resulting in a theoretical $O(n!)$ worst-case performance. This could be improved by using other algorithms common in literature such as the classic $\Theta(2^n n^2)$ Held-Karp algorithm \cite{held_dynamic_1962}.
+\item Similarly, it is desirable to implement a better algorithm to calculate minimum-weight maximal matchings.
+  The implemented algorithm is randomized and very na\"ive,
+  even though the problem is known to be solvable in polynomial time,
+  e.g. by the blossom algorithm \cite{kolmogorov_blossom_2009}, 
+  of which implementations exist \cite{kolmogorov_blossom_nodate}.
+\item Analogously, many other useful approximation techniques could be implemented. Some of them include simulated annealing \cite{kirkpatrick_optimization_1983}, the Lin-Kernighan heuristic \cite{lin_effective_1973}, or an ant colony optimization approach \cite{chu_ant_2004}.
+%\item Lastly, one could implement a representative comparison to state-of-the-art solvers. This could be implemented analgously to the ZaligVinder \cite{noauthor_zaligvinderzaligvinder_nodate} benchmarking framework in string solving.
+  % removed becuase of too many pages
+\end{itemize}

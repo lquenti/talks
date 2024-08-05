@@ -1,0 +1,173 @@
+================================================================================
+JobID = 17029009
+User = lars.quentin01, Account = all
+Partition = medium, Nodelist = amp027
+================================================================================
+Benchmark 1: /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/target/release/walky exact -p multi-threaded v0 /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/utils/gen_matrix_fast/results/3.xml
+  Time (mean ± σ):     138.8 ms ±  68.3 ms    [User: 4.7 ms, System: 5.8 ms]
+  Range (min … max):   115.6 ms … 333.3 ms    10 runs
+ 
+  Warning: Statistical outliers were detected. Consider re-running this benchmark on a quiet system without any interferences from other programs. It might help to use the '--warmup' or '--prepare' options.
+ 
+Benchmark 2: /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/target/release/walky exact -p multi-threaded v0 /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/utils/gen_matrix_fast/results/4.xml
+  Time (mean ± σ):     116.7 ms ±   0.7 ms    [User: 4.3 ms, System: 6.1 ms]
+  Range (min … max):   115.7 ms … 117.8 ms    10 runs
+ 
+Benchmark 3: /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/target/release/walky exact -p multi-threaded v0 /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/utils/gen_matrix_fast/results/5.xml
+  Time (mean ± σ):     116.1 ms ±   0.7 ms    [User: 4.5 ms, System: 6.0 ms]
+  Range (min … max):   115.3 ms … 117.7 ms    10 runs
+ 
+Benchmark 4: /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/target/release/walky exact -p multi-threaded v0 /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/utils/gen_matrix_fast/results/6.xml
+  Time (mean ± σ):     116.3 ms ±   1.1 ms    [User: 3.9 ms, System: 6.6 ms]
+  Range (min … max):   115.6 ms … 118.6 ms    10 runs
+ 
+Benchmark 5: /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/target/release/walky exact -p multi-threaded v0 /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/utils/gen_matrix_fast/results/7.xml
+  Time (mean ± σ):     115.7 ms ±   0.2 ms    [User: 4.3 ms, System: 6.3 ms]
+  Range (min … max):   115.5 ms … 116.0 ms    10 runs
+ 
+Benchmark 6: /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/target/release/walky exact -p multi-threaded v0 /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/utils/gen_matrix_fast/results/8.xml
+  Time (mean ± σ):     116.0 ms ±   0.4 ms    [User: 4.8 ms, System: 5.9 ms]
+  Range (min … max):   115.6 ms … 117.1 ms    10 runs
+ 
+Benchmark 7: /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/target/release/walky exact -p multi-threaded v0 /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/utils/gen_matrix_fast/results/9.xml
+  Time (mean ± σ):     116.2 ms ±   0.8 ms    [User: 4.0 ms, System: 6.6 ms]
+  Range (min … max):   115.7 ms … 118.5 ms    10 runs
+ 
+  Warning: Statistical outliers were detected. Consider re-running this benchmark on a quiet system without any interferences from other programs. It might help to use the '--warmup' or '--prepare' options.
+ 
+Benchmark 8: /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/target/release/walky exact -p multi-threaded v0 /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/utils/gen_matrix_fast/results/10.xml
+  Time (mean ± σ):     116.0 ms ±   0.2 ms    [User: 5.2 ms, System: 5.6 ms]
+  Range (min … max):   115.7 ms … 116.5 ms    10 runs
+ 
+Benchmark 9: /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/target/release/walky exact -p multi-threaded v0 /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/utils/gen_matrix_fast/results/11.xml
+  Time (mean ± σ):     116.4 ms ±   0.4 ms    [User: 4.9 ms, System: 6.3 ms]
+  Range (min … max):   115.9 ms … 117.0 ms    10 runs
+ 
+Benchmark 10: /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/target/release/walky exact -p multi-threaded v0 /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/utils/gen_matrix_fast/results/12.xml
+  Time (mean ± σ):     117.8 ms ±   1.0 ms    [User: 5.2 ms, System: 6.6 ms]
+  Range (min … max):   116.8 ms … 119.6 ms    10 runs
+ 
+Benchmark 11: /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/target/release/walky exact -p multi-threaded v0 /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/utils/gen_matrix_fast/results/13.xml
+  Time (mean ± σ):     117.5 ms ±   1.6 ms    [User: 4.7 ms, System: 6.5 ms]
+  Range (min … max):   116.1 ms … 120.9 ms    10 runs
+ 
+Benchmark 12: /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/target/release/walky exact -p multi-threaded v0 /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/utils/gen_matrix_fast/results/14.xml
+  Time (mean ± σ):     117.4 ms ±   0.4 ms    [User: 6.7 ms, System: 5.3 ms]
+  Range (min … max):   117.0 ms … 118.0 ms    10 runs
+ 
+Benchmark 13: /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/target/release/walky exact -p multi-threaded v0 /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/utils/gen_matrix_fast/results/15.xml
+  Time (mean ± σ):     117.3 ms ±   0.8 ms    [User: 6.5 ms, System: 5.2 ms]
+  Range (min … max):   116.7 ms … 119.6 ms    10 runs
+ 
+  Warning: Statistical outliers were detected. Consider re-running this benchmark on a quiet system without any interferences from other programs. It might help to use the '--warmup' or '--prepare' options.
+ 
+Benchmark 14: /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/target/release/walky exact -p multi-threaded v0 /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/utils/gen_matrix_fast/results/16.xml
+  Time (mean ± σ):     117.0 ms ±   0.3 ms    [User: 5.4 ms, System: 6.4 ms]
+  Range (min … max):   116.7 ms … 117.7 ms    10 runs
+ 
+Benchmark 15: /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/target/release/walky exact -p multi-threaded v0 /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/utils/gen_matrix_fast/results/17.xml
+  Time (mean ± σ):     117.1 ms ±   0.3 ms    [User: 5.9 ms, System: 5.9 ms]
+  Range (min … max):   116.8 ms … 117.6 ms    10 runs
+ 
+Benchmark 16: /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/target/release/walky exact -p multi-threaded v0 /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/utils/gen_matrix_fast/results/18.xml
+  Time (mean ± σ):     127.4 ms ±   0.6 ms    [User: 16.9 ms, System: 5.2 ms]
+  Range (min … max):   127.1 ms … 129.0 ms    10 runs
+ 
+  Warning: Statistical outliers were detected. Consider re-running this benchmark on a quiet system without any interferences from other programs. It might help to use the '--warmup' or '--prepare' options.
+ 
+Benchmark 17: /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/target/release/walky exact -p multi-threaded v0 /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/utils/gen_matrix_fast/results/19.xml
+  Time (mean ± σ):     117.9 ms ±   0.3 ms    [User: 6.9 ms, System: 5.7 ms]
+  Range (min … max):   117.7 ms … 118.5 ms    10 runs
+ 
+Benchmark 18: /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/target/release/walky exact -p multi-threaded v0 /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/utils/gen_matrix_fast/results/20.xml
+  Time (mean ± σ):     118.9 ms ±   0.3 ms    [User: 7.6 ms, System: 6.0 ms]
+  Range (min … max):   118.5 ms … 119.3 ms    10 runs
+ 
+Benchmark 19: /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/target/release/walky exact -p multi-threaded v0 /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/utils/gen_matrix_fast/results/21.xml
+  Time (mean ± σ):     122.4 ms ±   0.7 ms    [User: 11.0 ms, System: 5.8 ms]
+  Range (min … max):   121.7 ms … 124.3 ms    10 runs
+ 
+Benchmark 20: /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/target/release/walky exact -p multi-threaded v0 /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/utils/gen_matrix_fast/results/22.xml
+  Time (mean ± σ):     125.8 ms ±   1.1 ms    [User: 14.0 ms, System: 5.9 ms]
+  Range (min … max):   125.1 ms … 128.4 ms    10 runs
+ 
+Benchmark 21: /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/target/release/walky exact -p multi-threaded v0 /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/utils/gen_matrix_fast/results/23.xml
+  Time (mean ± σ):     123.5 ms ±   0.7 ms    [User: 13.0 ms, System: 4.8 ms]
+  Range (min … max):   122.8 ms … 125.0 ms    10 runs
+ 
+Benchmark 22: /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/target/release/walky exact -p multi-threaded v0 /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/utils/gen_matrix_fast/results/24.xml
+  Time (mean ± σ):     150.8 ms ±  69.5 ms    [User: 17.8 ms, System: 5.5 ms]
+  Range (min … max):   128.4 ms … 348.7 ms    10 runs
+ 
+  Warning: Statistical outliers were detected. Consider re-running this benchmark on a quiet system without any interferences from other programs. It might help to use the '--warmup' or '--prepare' options.
+ 
+Benchmark 23: /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/target/release/walky exact -p multi-threaded v0 /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/utils/gen_matrix_fast/results/25.xml
+  Time (mean ± σ):     23.009 s ±  1.350 s    [User: 154.736 s, System: 0.025 s]
+  Range (min … max):   21.000 s … 24.623 s    10 runs
+ 
+Benchmark 24: /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/target/release/walky exact -p multi-threaded v0 /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/utils/gen_matrix_fast/results/26.xml
+  Time (mean ± σ):     10.246 s ±  0.922 s    [User: 117.302 s, System: 0.023 s]
+  Range (min … max):    8.597 s … 11.708 s    10 runs
+ 
+Benchmark 25: /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/target/release/walky exact -p multi-threaded v0 /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/utils/gen_matrix_fast/results/27.xml
+  Time (mean ± σ):     25.498 s ±  6.228 s    [User: 276.878 s, System: 0.021 s]
+  Range (min … max):   20.256 s … 42.479 s    10 runs
+ 
+  Warning: Statistical outliers were detected. Consider re-running this benchmark on a quiet system without any interferences from other programs. It might help to use the '--warmup' or '--prepare' options.
+ 
+Benchmark 26: /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/target/release/walky exact -p multi-threaded v0 /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/utils/gen_matrix_fast/results/28.xml
+  Time (mean ± σ):     13.270 s ±  1.369 s    [User: 170.741 s, System: 0.021 s]
+  Range (min … max):   11.262 s … 15.501 s    10 runs
+ 
+Benchmark 27: /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/target/release/walky exact -p multi-threaded v0 /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/utils/gen_matrix_fast/results/29.xml
+  Time (mean ± σ):     21.292 s ±  2.063 s    [User: 278.247 s, System: 0.021 s]
+  Range (min … max):   19.140 s … 25.799 s    10 runs
+ 
+Benchmark 28: /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/target/release/walky exact -p multi-threaded v0 /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/utils/gen_matrix_fast/results/30.xml
+  Time (mean ± σ):     674.750 s ±  7.601 s    [User: 2390.814 s, System: 0.032 s]
+  Range (min … max):   670.748 s … 694.168 s    10 runs
+ 
+  Warning: Statistical outliers were detected. Consider re-running this benchmark on a quiet system without any interferences from other programs. It might help to use the '--warmup' or '--prepare' options.
+ 
+Benchmark 29: /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/target/release/walky exact -p multi-threaded v0 /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/utils/gen_matrix_fast/results/31.xml
+  Time (mean ± σ):     288.519 s ± 14.137 s    [User: 1369.318 s, System: 0.034 s]
+  Range (min … max):   276.805 s … 319.906 s    10 runs
+ 
+Benchmark 30: /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/target/release/walky exact -p multi-threaded v0 /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/utils/gen_matrix_fast/results/32.xml
+  Time (mean ± σ):     51.449 s ±  5.821 s    [User: 596.757 s, System: 0.026 s]
+  Range (min … max):   40.831 s … 60.763 s    10 runs
+ 
+Benchmark 31: /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/target/release/walky exact -p multi-threaded v0 /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/utils/gen_matrix_fast/results/33.xml
+  Time (mean ± σ):     55.675 s ±  5.936 s    [User: 719.507 s, System: 0.026 s]
+  Range (min … max):   45.570 s … 65.312 s    10 runs
+ 
+Benchmark 32: /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/target/release/walky exact -p multi-threaded v0 /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/utils/gen_matrix_fast/results/34.xml
+  Time (mean ± σ):     109.133 s ±  7.868 s    [User: 1355.757 s, System: 0.032 s]
+  Range (min … max):   101.806 s … 124.961 s    10 runs
+ 
+Benchmark 33: /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/target/release/walky exact -p multi-threaded v0 /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/utils/gen_matrix_fast/results/35.xml
+  Time (mean ± σ):     1066.734 s ± 32.757 s    [User: 4587.224 s, System: 0.037 s]
+  Range (min … max):   1045.505 s … 1155.730 s    10 runs
+ 
+  Warning: Statistical outliers were detected. Consider re-running this benchmark on a quiet system without any interferences from other programs. It might help to use the '--warmup' or '--prepare' options.
+ 
+Benchmark 34: /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/target/release/walky exact -p multi-threaded v0 /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/utils/gen_matrix_fast/results/36.xml
+  Time (mean ± σ):     87.883 s ±  8.775 s    [User: 1171.789 s, System: 0.031 s]
+  Range (min … max):   76.834 s … 103.178 s    10 runs
+ 
+Benchmark 35: /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/target/release/walky exact -p multi-threaded v0 /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/utils/gen_matrix_fast/results/37.xml
+  Time (mean ± σ):     286.678 s ± 16.194 s    [User: 3206.879 s, System: 0.038 s]
+  Range (min … max):   272.350 s … 316.705 s    10 runs
+ 
+Benchmark 36: /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/target/release/walky exact -p multi-threaded v0 /home/uni11/gwdg1/GWDG/lars.quentin01/code/walky/utils/gen_matrix_fast/results/38.xml
+slurmstepd: error: *** JOB 17029009 ON amp027 CANCELLED AT 2023-10-11T10:33:14 DUE TO TIME LIMIT ***
+============ Job Information ===================================================
+Submitted: 2023-10-10T10:32:24
+Started: 2023-10-10T10:32:42
+Ended: 2023-10-11T10:33:14
+Elapsed: 1441 min, Limit: 1440 min, Difference: -1 min
+CPUs: 24, Nodes: 1
+============= ProfiT-HPC =======================================================
+To generate the ProfiT-HPC text report, run the following command
+profit-hpc 17029009
+================================================================================

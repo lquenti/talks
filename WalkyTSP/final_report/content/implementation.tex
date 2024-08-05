@@ -1,0 +1,104 @@
+\section{Implementation}
+
+\subsection{Rust}
+% - Rust introduction from other paper
+Rust \cite{noauthor_rust_nodate} is a systems programming language initially released by Mozilla Research in 2015. It was designed as a memory-safe alternative for C++ in Servo \cite{developers_servo_nodate}, which is the web rendering engine used in Firefox. Rust's main goal is to provide memory safety while having an on-par performance with other systems languages such as C or C++. Having memory safety is paramount; research suggests that in memory-unsafe languages, at least 65\% of the security vulnerabilities are caused by memory unsafety. This was discovered simultaneously at Android \cite{stepanov_detecting_2020} \cite{stoep_queue_2019}, iOS and macOS \cite{kehrer_memory_2019}, Chrome \cite{noauthor_memory_nodate}, Microsoft \cite{thomas_proactive_2019}, Firefox \cite{hosfelt_implications_2019}, and Ubuntu \cite{geoffrey_thomas_geofft_unofficial_2019}.
+
+Specifically, Rust is great for \ac{HPC} since one can think of it as a modern dialect of C++ enforced by the compiler. It uses \acs{RAII}\footnote{\acf{RAII}} internally to ensure memory safety, while references are roughly equivalent to \texttt{std::unique\_ptr}. While Rust's ecosystem itself is still maturing, due to its clean \ac{FFI} and simple bidirectional C++ \cite{you_bindgen_2023} and Python \cite{pyo3_project_and_contributors_pyo3_2023} interoperability allows for seamless integration into a typical \ac{HPC} environment. Analogously, while the Rust compiler is comparatively new, it already supports most compiler optimizations by leveraging \ac{LLVM} as a compiler backend. It is natively compiled without a garbage collector.
+
+Lastly, with its many functional patterns, it is a very loved language by the industry and developers alike. According to the yearly StackOverflow survey it was voted as the most loved language for the 7th year in a row \cite{noauthor_stack_2023}. It rapidly gets adopted by big tech firms such as AWS \cite{asay_why_2020}, Google \cite{noauthor_welcome_nodate}, Meta \cite{garcia_programming_2022}, and Microsoft \cite{jirehl_microsoft_2022} and is even accepted as a language for the Linux kernel \cite{claburn_linus_2022}.
+
+Walky requires an \ac{MSRV} of 1.70.0\footnote{This does not require that 1.70.0 or higher is available as a cluster module because Rust uses \texttt{rustup} \cite{noauthor_rustuprs_nodate} for easy userspace installation management.}. Since \ac{MPI} support is hidden behind a feature flag, no \ac{MPI} is required for compilation.
+
+
+\subsection{Compiler Optimizations}
+To ensure the best possible performance, the following compiler optimizations were explicitly enabled:
+\begin{itemize}
+  \item \textbf{Release Builds (\texttt{-O3})}: If one does not use the release build\footnote{With \texttt{cargo build \textemdash\textemdash release}.} the code is not optimized. This enables several general optimizations as well as automatic vectorization.
+  \item \textbf{\ac{LLVM} \ac{LTO}}: \ac{LTO} enabled further, intermodular optimizations during the link stage. While this could improve code by optimizing beyond library bounds, it increases compile time, which is why it is disabled by default.
+  \item \textbf{Compiling for Native Architecture:} When compiling for the native architecture\footnote{Using the \texttt{RUSTFLAGS} environment variable, i.e. \texttt{RUSTFLAGS="-C target-cpu=native" cargo build \textemdash\textemdash release}.} the compiler can use more specialized instructions that are not available on every processor such as bigger vector registers for SIMD. Note that this may create binaries incompatible with other systems.
+  \item \textbf{Using a single \ac{LLVM} codegen unit:} Codegen units are analogous to translation units. This means that, when changing a single file, just the codegen unit in that file has to be recompiled. Therefore, optimizations can't be done beyond codegen unit bounds! Using a single codegen for the whole project allows the compiler to more aggressively optimize globally. Note that this effectively disables partial compilations.
+\end{itemize}
+
+\subsection{Command Line Interface (CLI)}
+
+The \texttt{walky} binary implements a \ac{CLI} using the crate \href{https://crates.io/crates/clap}{\texttt{clap}},
+structured with subcommands.
+
+For the following demonstration of the \ac{CLI},
+the \texttt{walky} binary has been compiled with
+\begin{minted}[breaklines, fontsize=\footnotesize]{text}
+$ cargo build --release --features mpi
+\end{minted}
+
+\texttt{walky} displays an overview of its subcommands:
+\begin{minted}[breaklines, fontsize=\footnotesize]{text}
+$ walky --help
+A TSP solver written in Rust
+
+Usage: walky <COMMAND>
+
+Commands:
+  exact        Find the exact best solution to a given TSP instance
+  approx       Find an approximate solution to a given TSP instance
+  lower-bound  Compute a lower bound cost of a TSP instance
+  help         Print this message or the help of the given subcommand(s)
+
+Options:
+  -h, --help     Print help
+  -V, --version  Print version
+\end{minted}
+
+Each subcommand follows the same basic syntax.
+
+\begin{minted}[fontsize=\footnotesize]{text}
+walky SUBCOMMAND [OPTIONS] <ALGORITHM> <INPUT_FILE>
+\end{minted}
+
+Users need to specify a subcommand. Then, they can provide optional parameters, after which
+they need to specify a concrete algorithm to use and a file path to the input file.
+The full help for every subcommand is listed in section \ref{sec:walky_subcommands}.
+
+\subsection{Parallelism Libraries}
+\label{sec:parallelism_libraries}
+For both shared- and distributed memory parallelism, specialized Rust crates were used:
+
+\paragraph{Shared Memory Parallelism:} For shared memory parallelism we used the rayon \cite{noauthor_rayon_2023} crate. Rayon is a high-level parallelism library using dynamically sized thread pools. It guarantees \emph{data-race freedom} by allowing only one thread to write at a time. Its main features are drop-in parallel iterators: By replacing \texttt{.iter()} with \texttt{.par\_iter}, it is possible to use all functions provided for iterators, such as \texttt{.map()}, \texttt{.filter()}, \texttt{.reduce()} for typical functional patterns or \texttt{.join(|| a(), || b())} enabling the \texttt{fork-join} computation model. Thus, when initially written in an iterator-focused, functional way it allowed easy parallelization of the previously designed sequential algorithms.
+
+\paragraph{Distributed Memory Parallelism:} For distributed memory, multi-node parallelism the \ac{HPC} native \ac{MPI} environment was leveraged using the rsmpi crate \cite{noauthor_mpi_2023}. rsmpi is a Rust-native \ac{MPI} implementation\footnote{With \ac{FFI} bindings to other implementations through the beforementioned bindgen.} compliant with MPI-3.1. It is tested to be compatible with OpenMPI, MPICH, and MS-MPI for Windows. It supports most \ac{MPI} features, such as blocking and non-blocking point-to-point communication, and most collective communications such as broadcasts or scatter/gather as well as aggregations such as reductions.
+
+\subsection{Correctness and Tests}
+To ensure the algorithm's correctness, both tests and runtime precondition checks were implemented:
+
+\paragraph{Testing:} Traditional testing was done using the \texttt{cargo-nextest} \cite{noauthor_nextest_2023} for parallelized unit tests. The algorithms were tested using pre-computed examples\footnote{Note that the Python tooling for the test case generation can still be found in \texttt{./utils} in the walky repository}, working as follows:
+
+\begin{enumerate}
+\item Generate a metric, fully connected, undirected graph by placing $n$ 2D points onto a space and calculating their pairwise distance. This ensures the triangle inequality.
+\item Solve the \ac{TSP} for the graph using Python's battle-tested \texttt{python-tsp} \cite{goulart_python_2023}.
+\item Generate the input and output Rust code for the test cases using Python.
+\end{enumerate}
+
+\paragraph{Preconditions:} At runtime, the following preconditions are checked at runtime before any algorithm starts to ensure correctness:
+
+\begin{itemize}
+\item \textbf{Fully Connected:} The \ac{TSP} is only defined for fully connected graphs, i.e. every node has a connection to any other node. This is always true for any real-world examples with metric spaces.
+\item \textbf{Undirectedness:} The \ac{TSP} is also only defined for undirected graphs. This means that both directions of an edge should have the same cost, i.e. for any two vertices $A, B$ the edge from $A$ to $B$ should have the same cost as the edge from $B$ to $A$.
+\item \textbf{No Multiedges:} Lastly, we require that no multi-edges exist. This means that for any two edges $A$ and $B$, there exists only one direct connection.
+\end{itemize}
+
+\subsection{\ac{CI} pipeline}
+Furthermore, to keep the code quality high, a sophisticated \ac{CI} pipeline was created, running on each commit on \texttt{main} as well as any pull request. It consists of the following steps running in parallel:
+\begin{itemize}
+\item \textbf{Build:} First and foremost, it is checked that the current version builds with release settings using \texttt{cargo build}. Note that, due to the limited Ubuntu \ac{CI} runner, the \ac{MPI} feature is disabled.
+\item \textbf{Tests:} Next, the automated unit tests are run using the aforementioned \texttt{cargo nextest}.
+\item \textbf{Formatter:} After that, the code formatting is verified using \texttt{cargo fmt}. The default Rust standard formatting is used.
+\item \textbf{Linter:} Also, the general linter \texttt{cargo clippy} is run to prevent common mistakes and ideomatize walky.
+\item \textbf{Documentation Linter:} Lastly, \texttt{cargo doc} is used to verify and lint our docstring documentation, on which our HTML-based documentation is based.
+\end{itemize}
+
+\subsection{Documentation and Releases}
+Lastly, to improve the \ac{UX} for walky, complete documentation and release management were set in place. Walky uses Semantic Versioning. When releasing a new version, the following artifacts become available:
+\begin{itemize}
+\item \textbf{Registry Upload:} The source code becomes available at \url{crates.io}, which is the default Rust crate registry. This results in being able to install walky using \texttt{cargo install walky}.
+\item \textbf{Hosted HTML-Documentation:} Whenever releasing a new version onto \url{crates.io}, an up-to-date, full test searchable HTML documentation becomes available at \url{docs.rs}\footnote{For walky: \url{https://docs.rs/walky/latest/walky/}}.
+\end{itemize}

@@ -6,8 +6,7 @@
 - [x] CompNT
 - [x] Perlen
 - [x] INFORMATIK 2023
-- [ ] HPCSA (gh)
-- [ ] PCHPC
+- [x] PCHPC
 - [ ] scap
 - [ ] NTHPDA
 

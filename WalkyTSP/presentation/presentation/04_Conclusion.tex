@@ -1,0 +1,54 @@
+% This part is to be filled by Lars
+
+\begin{frame}{Future Work}
+  \begin{block}{Exact Solver: Dynamic Load Distribution}
+    \begin{itemize}
+      \item Pruning makes the actual work load unpredictable
+      \item Instead of dividing chunks, the coordinator gives out work dynamically
+      \item Pro: More equal work distribution
+      \item Contra: More communication
+    \end{itemize}
+  \end{block}
+  \pause
+  \begin{block}{More MPI analysis and performance tuning}
+    \begin{itemize}
+      \item Especially using Vampir
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Contribution}
+\label{pg:lastpage} % Label on last frame to get the page number for footer
+  \vspace{-0.25cm}
+  \begin{enumerate}
+    \item Developed a CLI tool compatible with TSPLIB
+      \pause
+    \item Provided a software that is
+      \begin{itemize}
+        \item Blazingly fast
+        \item Pure Rust (compatible with C-based MPI flavours)
+        \item Supports shared- and distributed memory parallelization
+        \item Well documented and thoroughly tested
+      \end{itemize}
+      \pause
+    \item Including an exact solver
+      \begin{itemize}
+        \item With several pruning-based optimizations
+        \item Both shared- and distributed memory parallelized
+      \end{itemize}
+      \pause
+    \item And multiple approximate solvers
+      \begin{itemize}
+        \item Including the easy to parallelize "Nearest Neighbour" method
+        \item Supporting the sophisticated "Christofides" algorithm
+        \item Both shared- and distributed memory parallelized
+      \end{itemize}
+      \pause
+    \item Implemented the 1-tree lower bound
+      \begin{itemize}
+        \item Utilized shared- and distributed memory parallelization
+      \end{itemize}
+  \end{enumerate}
+\end{frame}
+
+
