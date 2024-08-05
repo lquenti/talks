@@ -1,0 +1,62 @@
+% spaces
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+
+% logic
+\newcommand{\larr}{\leftarrow}
+\newcommand{\rarr}{\rightarrow}
+\newcommand{\Larr}{\Leftarrow}
+\newcommand{\Rarr}{\Rightarrow}
+\newcommand{\lrarr}{\leftrightarrow}
+\newcommand{\Lrarr}{\Leftrightarrow}
+
+% Landau
+\newcommand{\BigO}{\mathcal{O}}
+
+% norm
+\newcommand{\norm}[2]{\left\lVert{#1}\right\rVert_{#2}}
+
+% vectors
+% used as
+% \colvec{5}{a}{b}{c}{d}{e}
+% stolen from https://tex.stackexchange.com/a/2712
+\newcount\colveccount
+\newcommand*\colvec[1]{
+        \global\colveccount#1
+        \begin{pmatrix}
+        \colvecnext
+}
+\def\colvecnext#1{
+        #1
+        \global\advance\colveccount-1
+        \ifnum\colveccount>0
+                \\
+                \expandafter\colvecnext
+        \else
+                \end{pmatrix}
+        \fi
+}
+
+% better greek
+\renewcommand*{\epsilon}{\varepsilon}
+\renewcommand*{\phi}{\varphi}
+\renewcommand*{\rho}{\varrho}
+
+% Zu zeigen
+\newcommand{\zz}{$ \mathrm{Z\kern-.3em\raise-0.5ex\hbox{Z}}$}
+
+% Theoreme
+% (definition theoremstyle sets the text upright)
+\theoremstyle{definition}\newtheorem*{definition}{Definition}
+\theoremstyle{definition}\newtheorem*{beispiel}{Beispiel}
+\theoremstyle{definition}\newtheorem*{notation}{Notation}
+\theoremstyle{definition}\newtheorem*{bemerkung}{Bemerkung}
+\theoremstyle{definition}\newtheorem*{uebung}{\"Ubung}
+\theoremstyle{definition}\newtheorem*{idee}{Idee}
+\theoremstyle{definition}\newtheorem*{note}{Note}
+
+\newtheorem{satz}{Satz}

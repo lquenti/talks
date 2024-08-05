@@ -3,7 +3,7 @@
   - [ ] Delete repo afterwards (and after extracting the readme)
 - [x] wiwikam (gh)
   - [ ] Delete repo afterwards
-- [ ] CompNT
+- [x] CompNT
 - [ ] Perlen
 - [ ] Clear up repo
   - [ ] Make all ordners the same
