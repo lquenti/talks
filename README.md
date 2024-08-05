@@ -1,7 +1,7 @@
 # Still missing
 - [x] Python (gh)
   - [ ] Delete repo afterwards (and after extracting the readme)
-- [ ] wiwikam (gh)
+- [x] wiwikam (gh)
   - [ ] Delete repo afterwards
 - [ ] CompNT
 - [ ] Perlen
