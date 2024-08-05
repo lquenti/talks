@@ -7,7 +7,7 @@
 - [x] Perlen
 - [x] INFORMATIK 2023
 - [x] PCHPC
-- [ ] scap
+- [x] scap
 - [ ] NTHPDA
 
 ## Meta
